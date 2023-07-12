@@ -13,6 +13,7 @@ const sendJWT = async (user, res, statusCode, message) => {
     ),
     httpOnly: true,
     secure: true,
+    sameSite: 'None',
   };
 
   res.status(statusCode).cookie("token", token, options).json({
