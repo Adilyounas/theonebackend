@@ -21,8 +21,12 @@ app.use(express.json())
 app.use(cookieParser())
 // *{<-------------To use proxy for development---------->}*
 // !{<-------------when you use res.redirect to frontend page a axios network error will appear to conqur it use cors options---------->}*
+const corsOptions = {
+    origin: 'https://warriordev.tech',
+    credentials: true,
+  };
 
-app.use(cors())
+app.use(cors(corsOptions))
 // *{<-------------This may Help To upload file---------->}*
 app.use(expressFileUpload())
 
