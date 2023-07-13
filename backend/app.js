@@ -22,7 +22,7 @@ app.use(cookieParser())
 // *{<-------------To use proxy for development---------->}*
 // !{<-------------when you use res.redirect to frontend page a axios network error will appear to conqur it use cors options---------->}*
 const corsOptions = {
-    origin: 'https://warriordev.tech',
+    origin: 'https://www.warriordev.tech',
     credentials: true,
   };
 
