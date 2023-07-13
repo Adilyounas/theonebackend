@@ -20,6 +20,8 @@ const sendJWT = async (user, res, statusCode, message) => {
     success: true,
     message,
   });
+
+  res.send('Cookie set!');
 };
 
 module.exports = sendJWT;
