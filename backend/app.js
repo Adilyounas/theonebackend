@@ -22,9 +22,15 @@ app.use(cookieParser())
 // *{<-------------To use proxy for development---------->}*
 // !{<-------------when you use res.redirect to frontend page a axios network error will appear to conqur it use cors options---------->}*
 const corsOptions = {
-    
-    credentials: true,
-  };
+  credentials: true,
+  origin: [
+    'https://www.warriordev.tech',
+    'https://www.warriordev.tech/login',
+    'https://www.warriordev.tech/register',  
+    'https://api.warriordev.tech',  
+    'https://www.api.warriordev.tech' 
+  ],
+};
 
 app.use(cors(corsOptions))
 // *{<-------------This may Help To upload file---------->}*
