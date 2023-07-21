@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel")
-
 // *{<-------------IsAuthenticated / login or not---------->}*
 
 const isAuthenticated = async (req, res, next) => {
   try {
+    
     const { token } =  req.cookies;
     if (!token) {
       return res.status(401).json({
