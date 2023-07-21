@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const cookieParser = require('cookie-parser')
+// const cookieParser = require('cookie-parser')
 const cors =require("cors")
 const expressFileUpload = require("express-fileupload")
 
@@ -18,7 +18,7 @@ const paymentRoutes = require("./routes/paymentRoutes")
 // *{<-------------To read json data---------->}*
 app.use(express.json())
 // *{<-------------To read cookie data---------->}*
-app.use(cookieParser())
+// app.use(cookieParser())
 // *{<-------------To use proxy for development---------->}*
 // !{<-------------when you use res.redirect to frontend page a axios network error will appear to conqur it use cors options---------->}*
 const corsOptions = {
