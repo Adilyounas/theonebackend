@@ -40,7 +40,7 @@ app.use(cookieParser())
 
 
 
-app.use(cors(   {origin: 'https://www.warriordev.tech', credentials: true}   ))
+app.use(cors(   { origin: ['https://warriordev.tech', 'https://www.warriordev.tech'], credentials: true}   ))
 // *{<-------------This may Help To upload file---------->}*
 app.use(expressFileUpload())
 
