@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 });
 
 const corsOptions ={
-  origin:'https://warriordev.tech', 
+  origin:'https://www.warriordev.tech', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
