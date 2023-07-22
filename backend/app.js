@@ -38,7 +38,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors())
+const corsOptions ={
+  origin:'https://warriordev.tech', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
+
+app.use(cors(corsOptions))
 // *{<-------------This may Help To upload file---------->}*
 app.use(expressFileUpload())
 
