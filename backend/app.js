@@ -21,31 +21,26 @@ app.use(express.json())
 app.use(cookieParser())
 // *{<-------------To use proxy for development---------->}*
 // !{<-------------when you use res.redirect to frontend page a axios network error will appear to conqur it use cors options---------->}*
-app.use((req, res, next) => {
-  // Set the allowed origin to the frontend's domain
-  res.header('Access-Control-Allow-Origin', 'https://warriordev.tech');
+// app.use((req, res, next) => {
+//   // Set the allowed origin to the frontend's domain
+//   res.header('Access-Control-Allow-Origin', 'https://warriordev.tech');
 
-  // Allow credentials (cookies) to be sent
-  res.header('Access-Control-Allow-Credentials', 'true');
+//   // Allow credentials (cookies) to be sent
+//   res.header('Access-Control-Allow-Credentials', 'true');
 
-  // Allow specific HTTP methods for cross-origin requests (e.g., GET, POST, PUT, DELETE, etc.)
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   // Allow specific HTTP methods for cross-origin requests (e.g., GET, POST, PUT, DELETE, etc.)
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 
-  // Allow specific headers for cross-origin requests
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//   // Allow specific headers for cross-origin requests
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
-  // Continue to the next middleware
-  next();
-});
-
-const corsOptions = {
-  origin: 'https://www.warriordev.tech', // Replace with your frontend domain
-  credentials: true, // Allow credentials (cookies)
-  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-};
+//   // Continue to the next middleware
+//   next();
+// });
 
 
-app.use(cors(corsOptions))
+
+app.use(cors(   {origin: 'https://www.warriordev.tech', credentials: true}   ))
 // *{<-------------This may Help To upload file---------->}*
 app.use(expressFileUpload())
 
