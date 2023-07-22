@@ -38,11 +38,12 @@ app.use((req, res, next) => {
   next();
 });
 
-const corsOptions ={
-  origin:'https://www.warriordev.tech', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}
+const corsOptions = {
+  origin: 'https://www.warriordev.tech', // Replace with your frontend domain
+  credentials: true, // Allow credentials (cookies)
+  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+};
+
 
 app.use(cors(corsOptions))
 // *{<-------------This may Help To upload file---------->}*
