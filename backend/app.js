@@ -21,18 +21,24 @@ app.use(express.json())
 app.use(cookieParser())
 // *{<-------------To use proxy for development---------->}*
 // !{<-------------when you use res.redirect to frontend page a axios network error will appear to conqur it use cors options---------->}*
-const corsOptions = {
-  credentials: true,
-  origin: [
-    'https://www.warriordev.tech',
-    'https://www.warriordev.tech/login',
-    'https://www.warriordev.tech/register',  
-    'https://api.warriordev.tech',  
-    'https://www.api.warriordev.tech' 
-  ],
-};
+app.use((req, res, next) => {
+  // Set the allowed origin to the frontend's domain
+  res.header('Access-Control-Allow-Origin', 'https://warriordev.tech');
 
-app.use(cors(corsOptions))
+  // Allow credentials (cookies) to be sent
+  res.header('Access-Control-Allow-Credentials', 'true');
+
+  // Allow specific HTTP methods for cross-origin requests (e.g., GET, POST, PUT, DELETE, etc.)
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+  // Allow specific headers for cross-origin requests
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+
+  // Continue to the next middleware
+  next();
+});
+
+app.use(cors())
 // *{<-------------This may Help To upload file---------->}*
 app.use(expressFileUpload())
 
