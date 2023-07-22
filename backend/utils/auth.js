@@ -7,15 +7,18 @@ const isAuthenticated = async (req, res, next) => {
 
 
     const token = req.cookies['token'];
-    console.log('Hi');
-   console.log(token);
-    
-   console.log(req.cookies);
-    
+    const logs = []; // Array to store logs
+
+    logs.push('Hi');
+    logs.push(`Token: ${token}`);
+    logs.push('Request Cookies:', req.cookies);
+
     if (!token) {
+      logs.push('Token not found. User is not authenticated.');
       return res.status(401).json({
         success: false,
         message: "Login First",
+        logs: logs, // Include logs in the response
       });
     }
     const {id} =jwt.verify(token, process.env.JWT_SECRET)
