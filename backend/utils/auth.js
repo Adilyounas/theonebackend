@@ -11,7 +11,7 @@ const isAuthenticated = async (req, res, next) => {
 
     logs.push('Hi');
     logs.push(`Token: ${token}`);
-
+    logs.push('Request Cookies:', JSON.stringify(req.cookies));
     if (!token) {
       logs.push('Token not found. User is not authenticated.');
       return res.status(401).json({
