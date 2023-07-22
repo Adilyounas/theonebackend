@@ -1,27 +1,19 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/userModel")
+const User = require("../models/userModel");
 // *{<-------------IsAuthenticated / login or not---------->}*
 
 const isAuthenticated = async (req, res, next) => {
   try {
+    const token = req.cookies["token"];
 
-
-    const token = req.cookies['token'];
-    const logs = []; // Array to store logs
-
-    logs.push('Hi');
-    logs.push(`Token: ${token}`);
-    logs.push('Request Cookies:', JSON.stringify(req.cookies));
     if (!token) {
-      logs.push('Token not found. User is not authenticated.');
       return res.status(401).json({
         success: false,
         message: "Login First",
-        logs: logs, // Include logs in the response
       });
     }
-    const {id} =jwt.verify(token, process.env.JWT_SECRET)
-    const user = await User.findOne({_id:id});
+    const { id } = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findOne({ _id: id });
 
     req.user = user;
     next();
